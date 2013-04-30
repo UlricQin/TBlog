@@ -1,0 +1,93 @@
+div.nav-123 {
+    width: 940px;
+    float: left;
+    margin-left: 40px;
+}
+div.nav-123 div {
+    color: #005d72;
+    font-weight: bold;
+    float: left;
+    margin-top: 12px;
+    font-size:16px;
+}
+div.nav-123 div span {
+    display: block;
+    position: relative;
+    left: -20px;
+    top: 16px;
+    width: 10px;
+    height: 10px;
+    background-color: #005d72;
+}
+div.nav-123 div.page-signature {
+    margin-bottom: 12px;
+}
+div.nav-123 ul div {
+    color: #333333;
+    font-weight: normal;
+}
+div.nav-123 ul {
+    width: 940px;
+    float: left;
+    margin-left: 0;
+}
+div.nav-123 ul li {
+    float: left;
+    width: 160px;
+    margin-right: 20px;
+    margin-top: 12px;
+}
+div.nav-123 ul li a {
+    font-weight: bold;
+    font-size: 14px;
+    color:#313131;
+}
+div.nav-123 ul li a:hover { text-decoration:underline;}
+div.nav-123 ul li span {
+    color: #797979;
+    display: block;
+    width: 160px;
+    font-size: 12px;
+}
+div.nav-123 ul div span {
+    display: block;
+    position: relative;
+    left: -14px;
+    top: 15px;
+    width: 6px;
+    height: 6px;
+    background-color: #333333;
+}
+em a {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+}
+a.microblog-163 {
+    background: url("/img/microblog-logos.png") 0 0 no-repeat;
+}
+a.microblog-sina {
+    background: url("/img/microblog-logos.png") -120px 0 no-repeat;
+}
+a.microblog-sohu {
+    background: url("/img/microblog-logos.png") -30px 0 no-repeat;
+}
+a.microblog-qq {
+    background: url("/img/microblog-logos.png") -60px 0 no-repeat;
+}
+a.microblog-t {
+    background: url("/img/microblog-logos.png") -90px 0 no-repeat;
+}
+.tsw_contact {
+padding:10px;
+margin-top:20px;
+text-align:center;
+}
+
+.baidu{
+margin-top:25px;
+margin-left:39px;
+}

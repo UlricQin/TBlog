@@ -1,0 +1,62 @@
+#set($layout="shell/login.vm")
+<h4>填写以下信息即可轻松注册哦</h4><hr class="cut-hr">
+<form id="frm" method="post" action="/action/user/reg">
+	<div class="line">
+		<span>登录ID：</span>
+		<input type="text" name="ident" id="ident">
+		这将是您以后登录用的唯一凭证，只允许字母和数字
+    </div>
+	<div class="line">
+		<span>用户昵称：</span>
+		<input type="text" name="nickname" id="nickname">
+    </div>
+	<div class="line">
+		<span>您的签名：</span>
+		<input type="text" name="resume" id="resume">
+    </div>
+	<div class="line">
+		<span>登录密码：</span>
+		<input type="password" name="pwd" id="pwd">
+	</div>
+	<div class="line">
+		<span>邀请码：</span>
+		<input type="text" name="invitation" id="invitation">
+	</div>
+	
+	<div class="line">
+		<span>&nbsp</span>
+		<button type="submit" class="ubtn">注册</button>
+		已有账号？直接去 <a href="/home/login">登录</a>
+	</div>
+</form>
+<script type="text/javascript" src="/js/jquery.form.js" charset="utf-8"></script>
+<script src="/js/sha1.js"></script>
+<script type="text/javascript">
+<!--
+var pwd="";
+$('#frm').bind('form-pre-serialize', function(event,form,options,veto){
+	pwd=$('#pwd').val();
+	$('#pwd').val(CryptoJS.SHA1(pwd));
+});
+$('#frm').ajaxForm({
+    beforeSubmit: function(a,f,o) {
+		if($('#ident').val().length == 0){
+			$('#pwd').val(pwd);
+			alertMsgCallback("ID忘记填写喽~",function(){$('#ident').focus();});
+			return false;
+		}
+    },
+	dataType:'json',
+    success: function(json) {
+    	if(json.msg.length > 0){
+			$('#pwd').val(pwd);
+    		alertMsg(json.msg);
+    	}else{
+    		location.href="/";
+    	}
+    }
+});
+//-->
+</script>
+
+

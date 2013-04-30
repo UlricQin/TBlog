@@ -1,0 +1,60 @@
+#set($layout="shell/me.vm")
+<a href="/">iPerl首页</a> » <a href="/me">后台管理</a> » 分类管理
+<hr class="cut-hr mt5 mb5" />
+#set($cs = $catalog_tool.all())
+#foreach($o in $cs)
+	$!{o.ident} - $!{o.name} - $!{o.dorder} - <a href="javascript:edit('$!{o.id}','$!{o.ident}','$!{o.name}','$!{o.dorder}');">edit</a> - <a href="javascript:delObj('/action/catalog/del?id=$!{o.id}');">delete</a> <br />
+#end
+<hr class="cut-hr mt5 mb5" />
+<input type="hidden" id="hidid" />
+ident:<input type="text" id="ident" /> name:<input type="text" id="name" /> dorder:<input type="text" id="dorder" />
+<button type="button" onclick="add();"> Add </button>
+<button type="button" onclick="update();"> Update </button>
+	
+<script>
+function edit(id,ident,name,dorder){
+	$("#hidid").val(id);
+	$("#ident").val(ident);
+	$("#name").val(name);
+	$("#dorder").val(dorder);
+}
+function add(){
+	ident = $("#ident").val();
+	name = $("#name").val();
+	dorder = $("#dorder").val();
+	if(ident.length == 0 || name.length == 0) {
+		alertMsg("ident or name can not be blank");
+		return false;
+	}
+	jQuery.post("/action/catalog/add", {'ident':ident,'name':name,'dorder':dorder},function(data){
+		if(data.msg.length>0){
+			alertMsg(data.msg);
+		}else{
+			alertMsgCallback("Add Success",function(){
+				location.reload();
+			});
+		}
+	},'json');
+}
+
+function update(){
+	ident = $("#ident").val();
+	name = $("#name").val();
+	dorder = $("#dorder").val();
+	id = $("#hidid").val();
+	if(ident.length == 0 || name.length == 0) {
+		alertMsg("ident or name can not be blank");
+		return false;
+	}
+	jQuery.post("/action/catalog/update", {'ident':ident,'name':name,'dorder':dorder,'id':id},function(data){
+		if(data.msg.length>0){
+			alertMsg(data.msg);
+		}else{
+			alertMsgCallback("Update Success",function(){
+				location.reload();
+			});
+		}
+	},'json');
+}
+
+</script>

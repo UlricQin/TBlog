@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<toolbox>  
+	<tool>
+	    <key>date</key>
+	    <scope>application</scope>
+	    <class>org.apache.velocity.tools.generic.ComparisonDateTool</class>
+	    <parameter name="format" value="yyyy-MM-dd"/>
+	</tool> 
+    <tool>  
+        <key>escape</key>  
+        <scope>application</scope>  
+        <class>org.apache.velocity.tools.generic.EscapeTool</class>  
+    </tool>
+    <tool>  
+        <key>core</key>  
+        <scope>application</scope>  
+        <class>my.toolbox.CoreTool</class>  
+    </tool>     
+    <tool>  
+        <key>link</key>  
+        <scope>application</scope>  
+        <class>my.toolbox.LinkTool</class>  
+    </tool>  
+    <tool>  
+        <key>date_tool</key>  
+        <scope>application</scope>  
+        <class>my.util.DateUtil</class>  
+    </tool> 
+    <tool>  
+        <key>catalog_tool</key>  
+        <scope>application</scope>  
+        <class>org.iperl.toolbox.CatalogTool</class>  
+    </tool>     
+    <tool>  
+        <key>blog_tool</key>  
+        <scope>application</scope>  
+        <class>org.iperl.toolbox.BlogTool</class>
+    </tool>  
+    <tool>  
+        <key>user_tool</key>  
+        <scope>application</scope>  
+        <class>org.iperl.toolbox.UserTool</class>
+    </tool>  
+    <tool>  
+        <key>tag_tool</key>  
+        <scope>application</scope>  
+        <class>org.iperl.toolbox.TagTool</class>
+    </tool>    
+</toolbox>

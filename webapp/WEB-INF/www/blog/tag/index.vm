@@ -1,0 +1,53 @@
+#set($layout="shell/home.vm")
+#set($tag = $link.param('p1',''))
+#set($stitle="$tag")
+#set($pageno = $link.param('p',1))
+#set($page_size = 10)
+#set($curr_uri = '')
+#set($ret = $blog_tool.byTag($tag, $pageno, $page_size))
+<script>
+	$(function(){
+		$("pre").addClass("prettyprint");
+		window.prettyPrint && prettyPrint();
+	});
+</script>
+<div id="body">
+    <div id="cons" class="fl">
+		<div class="mb10 navbar">按标签归档：<em>${tag}</em></div>
+		<!--foreach-->
+		#foreach($o in ${ret.list})
+        <div class="con">
+        	<div class="tit clearfix">
+                <a href="/blog/$!{o.id}/$!{o.ident}">$!{o.title}</a>
+            </div>
+          <div class="text">
+			$core.sub_str($!{o.content}, 500)
+			<div class="mt20">
+				<div class="clear"></div>
+    			<div class="fl">
+					#tager($o)
+    			</div>
+    			<div class="fr">
+    				<a href="/blog/$!{o.id}/$!{o.ident}">阅读全文...</a>
+                </div>
+				<div class="clear"></div>
+			</div>
+          </div>
+          #authorBar($o)
+        </div>
+		#end
+		<!--/foreach-->
+		#pager($curr_uri ${ret.cnt} $page_size)
+    </div>
+	<div id="slice" class="fr">
+		<!--slice-->
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+				#topHits
+				#catalogs
+				#tagCloud
+			</ul>
+		</div>
+		<!--/slice-->
+    </div>
+</div>

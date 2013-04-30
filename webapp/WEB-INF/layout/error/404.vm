@@ -1,0 +1,2 @@
+#set($layout = "shell/blank.vm")  
+Oops...The page is missing. <a href="/">Go home</a>

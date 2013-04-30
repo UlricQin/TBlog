@@ -1,0 +1,8 @@
+#set($layout="shell/me.vm")
+<a href="/">iPerl首页</a> » <a href="/me">后台管理</a> » 我的草稿箱
+<hr class="cut-hr mt5 mb5" />
+
+#set($list = $blog_tool.draft())
+#foreach($o in $list)
+	<a href="/blog/${o.id}">$!{o.title}</a> - <a href="/me/blog/edit?blogid=${o.id}">edit</a> - <a href="javascript:delObj('/action/blog/del?blogid=$!{o.id}');">delete</a> <br />
+#end

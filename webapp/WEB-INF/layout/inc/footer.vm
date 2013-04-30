@@ -1,0 +1,21 @@
+<div class="clear"></div>
+<footer>
+    <div class="site-source">
+        <a href="/">iPerl.org</a> is open source on <a href="https://github.com/UlricQin/TBlog" target="_blank">GitHub</a>.<br />
+        Patches, suggestions, and comments are welcome.
+    </div>
+    <div class="sfc-member">
+		Powered by <a href="mailto:cnperl@163.com">Ulric Qin</a>
+    </div>
+</footer>
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;pos=right&amp;uid=341935" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<!-- Baidu Button END -->
+<div style="display:none;">
+    
+</div>

@@ -1,0 +1,164 @@
+#macro(pager $__uri $__obj_count $__page_size)
+    #if($__obj_count > $__page_size)
+        #if($__uri.indexOf("?")>=0)#set($param_char='&')#else#set($param_char='?')#end
+        #if(!$__uri.endsWith("?") && !$__uri.endsWith("&"))
+    		#set($__p_uri = "${__uri}${param_char}")
+    	#else
+    		#set($__p_uri = $__uri)
+    	#end
+        #set($PAGE_COUNT = $core.page_count($__obj_count, $__page_size))
+        #set($__p = $link.param("p",1))
+    	#if($__p <= $PAGE_COUNT)
+        #set($pre_page = $__p - 1)
+        #set($next_page = $__p + 1)
+    	#if($__p > 3)
+        	#set($begin_idx = $__p - 3)
+    	#else
+    		#set($begin_idx = 1)
+    	#end	
+        #set($end_idx = $begin_idx + 7)
+        #if($end_idx > $PAGE_COUNT)#set($end_idx = $PAGE_COUNT)#end
+        <div class="pagination"><ul>
+            #if($__p > 1)<li><a href="${__p_uri}p=$pre_page">&lt;</a></li>#end#if($begin_idx > 1)<li><a href="${__p_uri}">1</a></li>#end#foreach($idx in [$begin_idx..$end_idx])#if($idx != $__p)<li><a href="${__p_uri}p=$idx">$idx</a></li>#else<li class='disabled'><a href="${__p_uri}p=$idx">$idx</a></li>#end#end#if($end_idx < $PAGE_COUNT)<li><a href="${__p_uri}p=$PAGE_COUNT">$PAGE_COUNT</a></li>#end#if($__p < $PAGE_COUNT)<li><a href="${__p_uri}p=$next_page">&gt;</a></li>#end
+        </ul></div>
+    	#end
+    #end
+#end
+
+#macro(tager $blog)
+	#if($blog)
+		分类：
+		<a href="/blog/catalog/${blog.catalog}/${blog.catalogObj().ident}">${blog.catalogObj().name}</a>
+		#if($core.is_not_blank(${blog.keywords}))
+			<span class="cut-line">|</span>
+			标签：
+			#foreach($t in ${blog.tags()})
+				<a href="/blog/tag/${t}">${t}</a>
+			#end
+		#end
+	#end
+#end
+
+#macro(catalogs)
+<li id="random-pages-widget" class="widget-container">
+	<h3 class="widget-title">博文分类列表</h3>
+    <ul class="xo">
+		#foreach($o in $catalog_tool.all()) 
+        <li> &raquo; <a href="/blog/catalog/${o.id}/$!{o.ident}">${o.name}</a></li>
+    	#end
+    </ul>
+</li>
+#end
+
+#macro(siteNotice)
+<li id="random-pages-widget" class="widget-container">
+	<h3 class="widget-title">站内公告</h3>
+    <p class="mt10 ml10 mr10 notice">
+		这个blog只是一个媒介，希望通过它找到更多的志同道合的人，我们关注互联网，关注自动化运维，关注程序语言，关注系统架构，关注开发方法，关注Geek工具，关注一个码农可能会关注的所有内容。
+	</p>
+	<p class="mt5 mb10 ml10 mr10 notice">
+		目前本站是提供给站长的几个朋友使用，仅仅是作为一个精致的blog而已，当然，如果你有好的idea，或者仅仅是想获得一个账号加入我们，都可以联系我：<a target="_blank" href="https://twitter.com/UlricQin">@UlricQin</a>
+	</p>
+</li>
+#end
+
+#macro(topHits)
+<li id="random-pages-widget" class="widget-container">
+	<h3 class="widget-title">热门博文列表</h3>
+    <ul class="xo">
+		#foreach($o in $blog_tool.topHits(10)) 
+        <li> &raquo; <a href="/blog/${o.id}/$!{o.ident}">${o.title}</a></li>
+    	#end
+    </ul>
+</li>
+#end
+
+#macro(team)
+<li id="random-pages-widget" class="widget-container">
+	<h3 class="widget-title">我们的Team</h3>
+    <ul class="xo">
+		#foreach($o in $user_tool.topAuthor(10)) 
+        <li> &raquo; <a href="/blog/user/${o.id}/$!{o.ident}">${o.showName()}（${o.blogcnt}）</a></li>
+    	#end
+    </ul>
+</li>
+#end
+
+#macro(underCatalog $catalog_id)
+#set($catalog = $catalog_tool.detail($catalog_id))
+#set($ret = $blog_tool.byCatalog($catalog_id,1,10))
+<li id="random-pages-widget" class="widget-container">
+	<h3 class="widget-title">${catalog.name}下的博文</h3>
+    <ul class="xo">
+		#foreach($o in ${ret.list}) 
+        <li> &raquo; <a href="/blog/${o.id}/$!{o.ident}">${o.title}</a></li>
+    	#end
+    </ul>
+</li>
+#end
+
+#macro(tagCloud)
+<li id="random-pages-widget" class="widget-container">
+	<h3 class="widget-title">热门标签</h3>
+	<div class="ml5 mr5 mb5">
+		#foreach($o in $tag_tool.all())
+			<a href="/blog/tag/${o.name}" class="tag">${o.name}(${o.cnt})</a>
+		#end
+	</div>
+</li>
+#end
+
+#macro(authorBar $blog)
+<div class="info clearfix">
+    <div class="fr">
+        <span class="author"><a href="/about/$!{blog.userObj().ident}">$!{blog.userObj().showName()}</a></span>
+        <span class="time">$date.format($!{blog.ctime})发表</span>
+        <span class="views" title="浏览次数">$!{blog.hits}次浏览</span>
+    </div>
+    <div class="clear"></div>
+</div>
+#end
+
+#macro(dcshare $o $module $userid)
+#set($id = $!{o.id})
+#set($dingcnt = $!{o.ding})
+#set($caicnt = $!{o.cai})
+#set($commentcnt = $!{o.comments})
+#set($content = $!{o.content})
+#if($module eq 'book')
+	#set($content = "《$!{o.name}》免费下载")
+#end
+<script>var duoshuoQuery = {short_name:"iperl"};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<div id="dcshare_$id" class="bar">
+    <ul>
+        <li id="vote-up-$id" class="up">
+        	<a href="javascript:vote('$id', '$module', '$userid','up')" id="up-$id" title="$dingcnt个顶">$dingcnt</a>
+        </li>
+        <li id="vote-dn-$id" class="down">
+        	<a href="javascript:vote('$id', '$module', '$userid','dn')" id="dn-$id" title="$caicnt个拍">$caicnt</a>
+        </li>
+        <li class="comment">
+			<a href="javascript:void(0);" id="co-$id" onclick="toggleDuoshuoComments('#commentbox-$id','${module}${id}','http://ai1024.com/$module/$id','37801');">评论</a>
+        </li>
+        <li class="share">
+        	<a href="#" id="$id" title="分享">分享</a>
+        </li>
+    </ul>
+
+    <div class="sharebox" id="sharebox_$id">
+		#set($pic = "/img/nlogo.gif")
+		#if($core.is_not_blank($!{o.picurl}))#set($pic = $!{o.picurl})#end
+        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" data="{'pic':'http://ai1024.com${pic}','url':'http://ai1024.com/$module/$id','text':'转自@爱1024官网：$core.sub_str_none($content,117)'}">
+            <a class="bds_renren" title="分享到人人网" href="#">人人网</a>
+            <a class="bds_qzone" title="分享到QQ空间" href="#">QQ空间</a>
+            <a class="bds_tsina" title="分享到新浪微博" href="#">新浪微博</a>
+            <a class="bds_tqq" title="分享到腾讯微博" href="#">腾讯微博</a>
+        	<div class="arrow"></div>
+        </div>
+    </div>
+
+</div>
+<div id="commentbox-$id"></div>
+#end
+

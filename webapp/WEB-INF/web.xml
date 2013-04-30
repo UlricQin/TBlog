@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+        http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	<display-name>iperl.org</display-name>
+
+	<filter>
+		<filter-name>global</filter-name>
+		<filter-class>my.mvc.URLMappingFilter</filter-class>
+		
+		<init-param>
+			<param-name>domain</param-name>
+			<param-value>iperl.org</param-value>
+		</init-param>
+		<init-param>
+			<param-name>template-path-prefix</param-name>
+			<param-value>/WEB-INF</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ignore</param-name>
+			<param-value>/action/,/uploads/,/img/,/css/,/js/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ignoreExts</param-name>
+			<param-value>ico,css,js,jpg,jpeg,gif,png,bmp,doc,xls,pdf,txt,html,htm,zip,rar,gz</param-value>
+		</init-param>
+		<init-param>
+			<param-name>default</param-name>
+			<param-value>/www</param-value>
+		</init-param>
+		<init-param>
+			<param-name>m</param-name>
+			<param-value>/wap</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>global</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- servlets -->
+	<servlet>
+		<servlet-name>velocity</servlet-name>
+		<servlet-class>my.view.VelocityServlet</servlet-class>
+		<init-param>
+			<param-name>org.apache.velocity.toolbox</param-name>
+			<param-value>/WEB-INF/conf/velocity-toolbox.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>org.apache.velocity.properties</param-name>
+			<param-value>/WEB-INF/conf/velocity.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>controller</servlet-name>
+		<servlet-class>my.mvc.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>packages</param-name>
+			<param-value>org.iperl.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>initial_actions</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>velocity</servlet-name>
+		<url-pattern>*.vm</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>velocity</servlet-name>
+		<url-pattern>/sitemap.xml</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>controller</servlet-name>
+		<url-pattern>/action/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- servlet config -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.vm</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/layout/error/403.vm</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/layout/error/404.vm</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/layout/error/500.vm</location>
+	</error-page>
+
+</web-app>

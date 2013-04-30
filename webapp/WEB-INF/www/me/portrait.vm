@@ -1,0 +1,103 @@
+#set($layout="shell/me.vm")
+#set($stitle="更换头像")
+#set($user=$core.user())
+<a href="/">iPerl首页</a> &raquo; <a href="/me">后台管理</a> &raquo; 更新头像
+<hr class="cut-hr mt5 mb5" />
+现在的头像:<img src="${user.showSmallPortrait()}">
+<hr class="cut-hr mt5 mb5" />
+<div id="user_portrait">
+<form class="admin_form" action="/action/user/up_portrait" method="POST" enctype="multipart/form-data">
+<ul>
+	<li>
+		<span class='Hint'>上传新头像</span>		
+		<span class='Input'><input type='file' name='img' size='30' id='f_portrait'/></span>
+		<span class='Info' id='name_msg'>图片 &lt;1M（png|jpg）</span>		
+		<input type='submit' value='上传' id='btn_preview' class='SUBMIT'/>
+	</li>
+	<li><img id="f_portrait_temp" src="" style='display:none;'/></li>
+	<li class='buttons'>
+		<span id='btn_saves' style='display:none'>
+		<input type='button' value='保存选中区域' id='btn_save_region' class='SUBMIT'/>
+		<input type='button' value='保存全图' id='btn_save_all' class='SUBMIT'/>
+		<span class='Info'>选择“保存全图”头像可能会变形</span>
+		</span>
+	</li>
+</ul>
+</form>
+<form id='form_save' action="/action/user/save_portrait" method="POST" style='display:none;'>
+<input type='hidden' id='img_left' name='left' value='0'/>
+<input type='hidden' id='img_top' name='top' value='0'/>
+<input type='hidden' id='img_width' name='width' value='0'/>
+<input type='hidden' id='img_height' name='height' value='0'/>
+</form>
+</div>
+<link rel="stylesheet" href="/js/jcrop/css/jquery.Jcrop.css" type="text/css" />
+<script src="/js/jcrop/js/jquery.Jcrop.min.js"></script>
+<script type="text/javascript">
+<!--
+  function showCoords(c){
+	$('#img_left').val(c.x);
+	$('#img_top').val(c.y);
+	$('#img_width').val(c.w);
+	$('#img_height').val(c.h);
+  };
+  $().ready(function(){
+      $('#btn_save_all').click(function(){
+      	jQuery.post('/action/user/save_portrait',{},function(data){
+			if(data.msg.length>0){
+				alertMsg(data.msg);
+			} else {
+				alertMsgCallback("头像更新成功",function(){
+        		  	location.reload();
+        		});
+			}
+    	},'json');
+      });
+      
+      $('#btn_save_region').click(function(){
+      	jQuery.post('/action/user/save_portrait',{'left':$("#img_left").val(),'top':$("#img_top").val(),'width':$("#img_width").val(),'height':$("#img_height").val()},function(data){
+    	  if(data.msg){
+				alertMsg(data.msg.length>0);
+			} else {
+				alertMsgCallback("头像更新成功",function(){
+        		  	location.reload();
+        		});
+			}
+    	},'json');
+      });
+      
+      $('.admin_form').ajaxForm({
+		  dataType: 'json',
+          success: function(json) {
+			if(json.img){
+				$('#f_portrait_temp').attr("width",json.width);
+				$('#f_portrait_temp').attr("height",json.height);
+				$('#f_portrait_temp').attr("src",json.img);
+				$('#f_portrait_temp').show();
+				$('#f_portrait_temp').ready(function(){
+    				var api = jQuery.Jcrop('#f_portrait_temp',{
+    					setSelect: [ 10, 10, 200, 200 ],
+						aspectRatio: 1,
+    					onChange: showCoords,
+    					onSelect: showCoords
+    				});
+					$('#btn_preview').hide();
+					$('#btn_saves').show();
+				});
+			}
+			else if(json.msg){			
+        		alertMsg(json.msg);
+			}
+          }
+      });
+	  $(".admin_form").ajaxStart(function(){
+	  	$('#btn_preview').val('正在上传，请稍后...');
+	  	$('#btn_preview').attr('disabled',true);
+      });
+	  $(".admin_form").ajaxComplete(function(event,request, settings){
+	  	$('#btn_preview').val('预览头像');
+	  	$('#btn_preview').attr('disabled',false);
+      }); 
+  });
+//-->
+</script>

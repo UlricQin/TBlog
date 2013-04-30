@@ -1,0 +1,52 @@
+#set($layout="shell/me.vm")
+#set($stitle="个人主页定制")
+#set($page = $user_tool.page())
+<a href="/">iPerl首页</a> &raquo; <a href="/me">后台管理</a> &raquo; 个人主页定制
+<hr class="cut-hr mt5 mb5" />
+
+
+<form id="frm" action='/action/user/savePage' method="post">
+	<textarea name='content' style='width:960px;height:500px;'>$core.htmlSpecialChars($!{page.content})</textarea>
+	<br />
+	<input name="submit" type="submit" value="保存" />
+</form>
+
+<link rel="stylesheet" href="/js/ke4/themes/default/default.css" />
+<script charset="utf-8" src="/js/ke4/kindeditor-min.js"></script>
+<script charset="utf-8" src="/js/ke4/lang/zh_CN.js"></script>
+<script type="text/javascript">
+<!--
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('textarea[name="content"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : false,
+		allowImageUpload : true,
+		uploadJson : '/action/file/up',
+        allowFileManager : false,
+		cssPath : '/js/ke4/plugins/code/prettify.css'
+	});
+});
+$('#frm').ajaxForm({
+	beforeSerialize: function($form, options) { 
+		editor.sync();         
+    },
+    beforeSubmit: function(a,f,o) {
+		if(editor.isEmpty()){
+			alertMsg("内容不能为空哦，简单说几句介绍自己的话，提高知名度嘛");
+			return false;
+		}
+    },
+	dataType:'json',
+    success: function(json) {
+		if(json.msg.length>0){
+			alertMsg(json.msg);
+		}else{
+			alertMsgCallback("Success~",function(){
+				location.reload();
+			});
+		}
+    }
+});
+//-->
+</script>

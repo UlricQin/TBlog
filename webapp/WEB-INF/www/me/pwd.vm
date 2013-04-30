@@ -1,0 +1,67 @@
+#set($layout="shell/me.vm")
+<a href="/">iPerl首页</a> » <a href="/me">后台管理</a> » 密码修改
+<hr class="cut-hr mt5 mb5" />
+
+<form id="frm" method="post" action="/action/user/chpwd">
+	<div class="line mt10">
+		<span>输入旧密码：</span>
+		<input type='password' name='old_passwd' class='pass' id='old_passwd'/>
+    </div>
+	<div class="line">
+		<span>输入新密码：</span>
+		<input type='password' name='new_passwd' class='pass' id='new_passwd'/>
+    </div>
+	<div class="line">
+		<span>再次输入新密码：</span>
+		<input type='password' name='new_passwd2' class='pass' id='new_passwd2'/>
+    </div>
+	<div class="line mt10">
+		<span>&nbsp</span>
+		<button type="submit" class="ubtn">更新密码</button>
+	</div>
+</form>
+<script src="/js/sha1.js"></script>
+<script type="text/javascript">
+<!--
+function clearpwd(){
+	$('#old_passwd').val("");
+	$('#new_passwd').val("");
+	$('#new_passwd2').val("");
+}
+$('#old_passwd').focus();
+$('#frm').bind('form-pre-serialize', function(event,form,options,veto){
+	var old_pwd=$('#old_passwd').val();
+	$('#old_passwd').val(CryptoJS.SHA1(old_pwd));
+	var new_pwd = $('#new_passwd').val();
+	$('#new_passwd').val(CryptoJS.SHA1(new_pwd));
+	var new_pwd2 = $('#new_passwd2').val();
+	$('#new_passwd2').val(CryptoJS.SHA1(new_pwd2));
+});
+$('#frm').ajaxForm({
+    beforeSubmit: function(a,f,o) {
+		if($('#old_passwd').val().length == 0){
+			alertMsg("原密码不能为空");
+			return false;
+		}
+		if($('#new_passwd').val().length == 0){
+			alertMsg("新密码不能为空");
+			return false;
+		}
+    },
+	dataType:'json',
+    success: function(json) {
+    	if(json.msg.length>0){
+    		alertMsgCallback(json.msg, function(){
+    			clearpwd();
+    		});
+    	}else{
+			clearpwd();
+    		alertMsgCallback("密码修改成功，请重新登录",function(){
+				window.location.href="/home/login";
+			});
+        }
+	}
+});
+//-->
+</script>
+

@@ -1,0 +1,82 @@
+#set($layout="shell/me.vm")
+#set($blogid = $link.param('blogid',0))
+#set($blog = $blog_tool.detail($blogid))
+<a href="/">iPerl首页</a> » <a href="/me">后台管理</a> » 发表博文
+<hr class="cut-hr mt5 mb5" />
+	
+<form id="frm" action='/action/blog/edit' method="post">
+	<input type="hidden" name="blogid" value="${blogid}">
+	<div class="mt10">文章标题：<input type="text" value="$!{blog.title}" name="title" id='title' style="width:400px;"><span class='red'> * </span></div>
+	<div class="mt10">英文标题：<input type="text" value="$!{blog.ident}" name="ident" maxlength="128" style="width:400px;">用于显示在URL地址中，不能有空格，用 - 分隔word，为了SEO</div>
+	<div class="mt10">类型：
+	<select name="type">
+		<option value="0" #if(${blog.type} == 0) selected #end>原创</option>
+		<option value="1" #if(${blog.type} == 1) selected #end>翻译</option>
+		<option value="2" #if(${blog.type} == 2) selected #end>转载</option>
+    </select>
+	原始地址：<input type="text" value="$!{blog.url}" name="url" style="width:500px;"> 转载或翻译时请给出原始地址</div>
+	<div class="mt10">
+	文章分类：
+	<select name='catalog'>
+    	#foreach($o in $catalog_tool.all()) 
+    	<option value='${o.id}' #if(${blog.catalog} == ${o.id}) selected #end>${o.name}</option>	
+    	#end
+	</select>
+	<a target="_blank" href="/me/blog/catalog">管理分类</a>
+    </div>
+	<div class="mt10">
+    	<textarea name='content' style='width:960px;height:500px;'>$core.htmlSpecialChars($!{blog.content})</textarea>
+	</div>
+	<div class="mt10">
+    	分类Tag：<input type="text" value="$!{blog.keywords}" name="tags" style="width:370px;"> 多个关键字用半角逗号隔开，最多5个，同时用于html的keywords字段，for SEO
+	</div>		
+	<div class="mt10">
+    	导读（同时用于html的description，为了SEO）：<textarea name='desn' style='width:960px;height:50px;'>$!{blog.desn}</textarea>
+	</div>
+	<input name="post" type="submit" value="正式发布" /><input name="draft" type="submit" value="保存草稿" />
+</form>
+	
+<link rel="stylesheet" href="/js/ke4/themes/default/default.css" />
+<script charset="utf-8" src="/js/ke4/kindeditor-min.js"></script>
+<script charset="utf-8" src="/js/ke4/lang/zh_CN.js"></script>
+<script type="text/javascript">
+<!--
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('textarea[name="content"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : false,
+		allowImageUpload : true,
+		uploadJson : '/action/file/up',
+        allowFileManager : false,
+		cssPath : '/js/ke4/plugins/code/prettify.css'
+	});
+});
+$('#frm').ajaxForm({
+	beforeSerialize: function($form, options) { 
+		editor.sync();         
+    },
+    beforeSubmit: function(a,f,o) {
+		if($('#title').val().length == 0){
+			$('#title').focus();
+			alertMsg("文章标题不能少的哦");
+			return false;
+		}
+		if(editor.isEmpty()){
+			alertMsg("博文内容不能为空哦");
+			return false;
+		}
+    },
+	dataType:'json',
+    success: function(json) {
+		if(json.msg.length>0){
+			alertMsg(json.msg);
+		}else{
+			alertMsgCallback("Success~",function(){
+				location.href="/blog/${blogid}";
+			});
+		}
+    }
+});
+//-->
+</script>

@@ -1,0 +1,70 @@
+#set($layout="shell/home.vm")
+#set($blogid = $link.param('p1',0))
+#set($blog = $blog_tool.detail($blogid))
+#set($user=$core.user())
+#set($stitle="$!{blog.title}")
+#set($skeywords="$!{blog.keywords}")
+#set($sdesn="$!{blog.desn}")
+<script>
+	$(function(){
+		$("pre").addClass("prettyprint");
+		window.prettyPrint && prettyPrint();
+		jQuery.get('/action/blog/hit?blogid=$blogid');
+	});
+</script>
+<div id="body">
+    <div id="cons" class="fl">
+		#if(!$blog.pubed())
+    		<div class="mb10 navbar"><em>这是一篇未正式发表的博文，以下为预览内容</em></div>
+		#end
+		<div class="mb10 navbar"><a href="/">首页</a> &raquo; <a href="/blog/catalog/$!{blog.catalog}/$!{blog.catalogObj().ident}">$!{blog.catalogObj().name}</a> &raquo; $!{blog.title}</div>
+		<!--foreach-->
+        <div class="con">
+        	<div class="tit clearfix">
+                <h1 class="fl" style="font-size:18px;">$!{blog.title}</h1>
+				#if($user && ${user.id} eq ${blog.user})
+					<span class="resume ml5">（<a href="/me/blog/edit?blogid=${blog.id}">编辑</a>）</span>
+				#end
+				<div class="clear"></div>
+            </div>
+            <div class="text">
+				#if($core.is_not_blank(${blog.desn}))
+                <div class="p10 mb10 navbar" style="background:#FFF7DE;">[导读] $!{blog.desn}</div>
+				#end
+				<div class="px14">$!{blog.content}</div>
+				<div class="mt20">
+    				<div class="clear"></div>
+        			<div class="fl">
+    					#tager($blog)
+        			</div>
+    				<div class="clear"></div>
+				</div>
+            </div>
+			#authorBar($blog)
+        </div>
+		<div class="con">
+			<div class="text">
+				上一篇：#if(${blog.pre()})<a href="/blog/$!{blog.pre().id}/$!{blog.pre().ident}">$!{blog.pre().title}</a>#else没有了#end<br />
+				下一篇：#if(${blog.next()})<a href="/blog/$!{blog.next().id}/$!{blog.next().ident}">$!{blog.next().title}</a>#else没有了#end
+			</div>
+        </div>
+		#include("WEB-INF/layout/inc/ujian.vm")
+		<div class="con">
+			<div class="text">
+			#include("WEB-INF/layout/inc/duoshuo.vm")
+			</div>
+		</div>
+		<!--/foreach-->
+    </div>
+	<div id="slice" class="fr">
+		<!--slice-->
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+				#siteNotice
+				#topHits
+				#underCatalog(${blog.catalog})
+			</ul>
+		</div>
+		<!--/slice-->
+    </div>
+</div>

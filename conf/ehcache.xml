@@ -1,0 +1,36 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../main/config/ehcache.xsd"
+	updateCheck="false" dynamicConfig="false">
+
+	<diskStore path="java.io.tmpdir" />
+
+	<defaultCache maxElementsInMemory="1000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true" />
+
+	<cache name="User" maxElementsInMemory="100" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="36000" overflowToDisk="true" />
+
+	<cache name="hour1" maxElementsInMemory="200" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="3600" overflowToDisk="true" />
+
+	<cache name="min5" maxElementsInMemory="200" eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="300" overflowToDisk="true" />
+		
+	<cache name="session" maxElementsInMemory="1000" eternal="false"
+		timeToIdleSeconds="1800" timeToLiveSeconds="1800" overflowToDisk="true" />
+	
+	<cache name="BlogCatalog" maxElementsInMemory="100" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="36000" overflowToDisk="true" />
+		
+	<cache name="BlogTag" maxElementsInMemory="2000" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="36000" overflowToDisk="true" />
+		
+	<cache name="Tag" maxElementsInMemory="200" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="36000" overflowToDisk="true" />
+	
+	<cache name="Page" maxElementsInMemory="200" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="36000" overflowToDisk="true" />
+	
+	<cache name="Blog" maxElementsInMemory="1000" eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="300" overflowToDisk="true" />	
+</ehcache>

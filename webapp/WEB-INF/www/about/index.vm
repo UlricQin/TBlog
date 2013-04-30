@@ -1,0 +1,41 @@
+#set($layout="shell/home.vm")
+#set($ident = $link.param('p1',''))
+#set($page = $user_tool.pageByIdent($ident))
+#set($user = $user_tool.detail(${page.user}))
+#set($stitle="${user.showName()}的个人简介")
+<script>
+	$(function(){
+		$("pre").addClass("prettyprint");
+		window.prettyPrint && prettyPrint();
+	});
+</script>
+<div id="body">
+    <div id="cons" class="fl">
+		<!--foreach-->
+        <div class="con">
+        	<div class="tit clearfix">
+                ${user.showName()}<span class="resume ml5">（$!{user.resume}）</span>
+            </div>
+            <div class="text">
+				<div class="fr"><img class="ml10 mb10" src="${user.showSmallPortrait()}" /></div>
+				${page.content}
+            </div>
+        </div>
+		<div class="con">
+			<div class="text">
+			#include("WEB-INF/layout/inc/duoshuo.vm")
+			</div>
+		</div>
+		<!--/foreach-->
+    </div>
+	<div id="slice" class="fr">
+		<!--slice-->
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+				#siteNotice
+			</ul>
+		</div>
+		<!--/slice-->
+    </div>
+</div>
+

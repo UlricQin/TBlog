@@ -1,0 +1,129 @@
+#set($layout="shell/blank.vm")
+#set($stitle="牛人技术博客汇总")
+#set($skeywords="牛人技术博客，IT牛人，博客风云榜")
+#set($sdesn='IT牛人博客风云榜，汇聚各个IT界的牛人博客，学习编程，从读大牛的博客开始')
+<link rel="stylesheet" href="/css/c.css" type="text/css"/>
+<link rel="stylesheet" href="/css/genius.css" type="text/css"/>
+<div class="nav-123 mb20">
+    <div><span></span>团队技术博客</div>
+    <ul>
+        <li><a href="http://ued.taobao.com/blog/" target="_blank">淘宝UED</a><em><a href=""></a></em><span>淘宝用户体验</span></li>
+        <li><a href="http://rdc.taobao.com/blog/cs/" target="_blank">淘宝核心系统</a><em><a href=""></a></em><span>淘宝核心系统团队</span></li>
+        <li><a href="http://www.taobaodba.com/" target="_blank" title="数据库管理，数据库开发，数据库工具，自动化运维">阿里数据库团队</a><em><a href=""></a></em><span>数据库管理开发运维</span></li>
+        <li><a href="http://rdc.taobao.com/team/jm/" target="_blank" title="致力于成为中国最强大的JAVA技术团队">淘宝通用产品</a><em><a href=""></a></em><span>专注JAVA技术</span></li>
+        <li><a href="http://www.taobaotest.com/" target="_blank" title="致力于做测试的行业标准">淘宝QA</a><em><a href=""></a></em><span>做测试的行业标准</span></li>
+        <li><a href="http://www.searchtb.com/" target="_blank" title="关注技术 关注搜索 关注淘宝">淘宝搜索技术</a><em><a href=""></a></em><span>关注技术 关注搜索</span></li>
+        <li><a href="http://blog.linezing.com/" target="_blank">量子恒道</a><em><a class="microblog-sina" href="http://weibo.com/ourdata?s=6cm7D0" target="_blank"></a></em><span>专注大数据统计</span></li>
+		<li><a href="http://stblog.baidu-tech.com/" target="_blank" title="分享百度工程师研究的方向和取得的成果">百度搜索研发</a><em><a href=""></a></em><span>关注搜索相关技术</span></li>
+		<li><a href="http://qing.weibo.com/emclabschina" target="_blank">EMC中国研究院</a><em><a href=""></a></em><span>云计算和大数据</span></li>
+		<li><a href="http://code.alibabatech.com/blog/" target="_blank">贰号楼肆层</a><em><a href=""></a></em><span>阿里巴巴平台技术部</span></li>
+		<li><a href="http://www.alidata.org/archives" target="_blank">阿里数据平台</a><em><a href=""></a></em><span>阿里巴巴数据平台</span></li>
+		<li><a href="http://blog.csdn.net/baiduforum" target="_blank">百度技术</a><em><a href=""></a></em><span>分享交流百度的互联网技术</span></li>
+		<li><a href="http://blog.webshuo.com/" target="_blank">编码者说</a><em><a href=""></a></em><span>腾讯滴技术团队</span></li>
+		<li><a href="http://blog.csdn.net/soso_blog/" target="_blank">腾讯SOSO</a><em><a href=""></a></em><span>SOSO团队博客</span></li>
+		<li><a href="http://fed.renren.com/" target="_blank">人人网FED</a><em><a href=""></a></em><span>关注前端技术</span></li>
+		<li><a href="http://www.alidba.net/" target="_blank">阿里DBA Team</a><em><a href=""></a></em><span>阿里巴巴数据库团队</span></li>
+		<li><a href="http://cdc.tencent.com/" target="_blank">腾讯CDC</a><em><a class="microblog-qq" href="http://e.t.qq.com/tencent_cdc" target="_blank"></a></em><span>为用户创造优质在线生活体验</span></li>
+    </ul>
+	<div><span></span>底层架构博客</div>
+    <ul>
+        <li><a href="http://blog.sina.com.cn/kdeng" target="_blank" title="美国卡内基梅隆计算机机器人专业博士，面向移动的云计算创业人">邓侃</a><em><a class="microblog-sina" href="http://weibo.com/kandeng" target="_blank"></a></em><span>机器人专业博士</span></li>
+        <li><a href="http://blog.sina.com.cn/iyangjian" target="_blank">杨建</a><em><a class="microblog-sina" href="http://weibo.com/iyangjian" target="_blank"></a></em><span>新浪架构师</span></li>
+        <li><a href="http://www.54chen.com/" target="_blank">陈臻</a><em><a class="microblog-sina" href="http://weibo.com/54chen" target="_blank"></a></em><span>米聊的54chen</span></li>
+        <li><a href="http://blog.sina.com.cn/kern0612" target="_blank">阳振坤</a><em><a class="microblog-sina" href="http://weibo.com/u/1070095910" target="_blank"></a></em><span>云计算和海量数据库</span></li>
+        <li><a href="http://hi.baidu.com/caoz/blog" target="_blank">曹政</a><em><a class="microblog-sina" href="http://weibo.com/caoz" target="_blank"></a></em><span>4399架构师</span></li>
+        <li><a href="http://coolshell.cn/" target="_blank">陈皓</a><em><a class="microblog-sina" href="http://weibo.com/haoel" target="_blank"></a></em><span>酷壳博主</span></li>
+        <li><a href="http://qing.weibo.com/linshiding" target="_blank">林仕鼎</a><em><a class="microblog-sina" href="http://weibo.com/linshiding" target="_blank"></a></em><span>百度架构师</span></li>
+        <li><a href="http://blog.yufeng.info/" target="_blank">余锋</a><em><a class="microblog-sina" href="http://weibo.com/tchuba" target="_blank"></a></em><span>他就是淘宝褚霸</span></li>
+        <li><a href="http://blog.sina.com.cn/zgwangbo001" target="_blank">王波</a><em><a class="microblog-sina" href="http://weibo.com/u/1644420310" target="_blank"></a></em><span>百度十年码工</span></li>
+        <li><a href="http://blog.zhuzhaoyuan.com/" target="_blank">朱照远</a><em><a class="microblog-sina" href="http://weibo.com/tshudu" target="_blank"></a></em><span>他就是淘叔度</span></li>
+        <li><a href="http://www.pagefault.info/" target="_blank">刘炜</a><em><a class="microblog-sina" href="http://weibo.com/tdiaoliang" target="_blank"></a></em><span>他就是淘宝雕梁</span></li>
+        <li><a href="http://www.cnblogs.com/foxmailed/" target="_blank">吴镝</a><em><a class="microblog-sina" href="http://weibo.com/foxmailed" target="_blank"></a></em><span>专注基础架构，分布式系统</span></li>
+        <li><a href="http://blog.s135.com/index.php" target="_blank">张宴</a><em><a href=""></a></em><span>Nginx大神</span></li>
+        <li><a href="http://zh.linuxvirtualserver.org/" target="_blank">章文嵩</a><em><a href=""></a></em><span>LVS作者</span></li>
+        <li><a href="http://blog.lifeibo.com/" target="_blank">李飞勃</a><em><a href=""></a></em><span>自称非主流程序员</span></li>
+        <li><a href="http://www.yankay.com/" target="_blank">颜开</a><em><a class="microblog-sina" href="http://weibo.com/yankaycom" target="_blank"></a></em><span>在EMC</span></li>
+        <li><a href="http://dinglin.iteye.com/" target="_blank">林晓斌</a><em><a class="microblog-sina" href="http://weibo.com/tdingqi" target="_blank"></a></em><span>他就是淘宝丁奇</span></li>
+        <li><a href="http://www.wentrue.net/blog/" target="_blank">阿稳</a><em><a class="microblog-sina" href="http://weibo.com/wentrue" target="_blank"></a></em><span>豆瓣的算法攻城师</span></li>
+        <li><a href="http://rednaxelafx.iteye.com/" target="_blank" title="从淘宝跳到Oracle开发JVM">RednaxelaFX</a><em><a class="microblog-sina" href="http://weibo.com/rednaxelafx" target="_blank"></a></em><span>曾经的淘撒迦</span></li>
+        <li><a href="http://clay.phpme.info/" target="_blank">Claymore</a><em><a href=""></a></em><span>通才啊</span></li>
+        <li><a href="http://martinfowler.com/" target="_blank">Martin Fowler</a><em><a href=""></a></em><span>OO，CI泰山北斗</span></li>
+		<li><a href="http://timyang.net/" target="_blank">TimYang</a><em><a class="microblog-sina" href="http://weibo.com/timyang" target="_blank"></a></em><span>新浪微博滴牛X人</span></li>
+		<li><a href="http://wangxu.me/blog/" target="_blank">王旭</a><em><a href=""></a></em><span>Cassandra权威指南译者</span></li>
+		<li><a href="http://blog.csdn.net/cenwenchu79/" target="_blank">放翁 文初</a><em><a class="microblog-sina" href="http://weibo.com/fangweng" target="_blank"></a></em><span>淘宝开放平台技术产品负责人</span></li>
+		<li><a href="http://www.qingliangcn.com/" target="_blank">庆亮</a><em><a class="microblog-t" href="http://twitter.com/qingliangcn" target="_blank"></a></em><span>高性能服务端架构与设计</span></li>
+		<li><a href="http://mqzhuang.iteye.com/" target="_blank">淘宝华庭</a><em><a href=""></a></em><span>Glibc内存管理</span></li>
+		<li><a href="http://wangyuanzju.blog.163.com/" target="_blank">网易汪源</a><em><a class="microblog-sina" href="http://weibo.com/breezes" target="_blank"></a></em><span>网易杭州研究院副总监</span></li>
+		<li><a href="http://blog.sina.com.cn/firegl" target="_blank">黄亮</a><em><a class="microblog-sina" href="http://weibo.com/firegl" target="_blank"></a></em><span>关注企业存储、服务器相关</span></li>
+		<li><a href="http://blog.fulin.org/" target="_blank">唐福林</a><em><a class="microblog-sina" href="http://weibo.com/tangfl" target="_blank"></a></em><span>新浪微博开放平台架构师</span></li>
+		<li><a href="http://sunli.cnblogs.com/" target="_blank">孙立</a><em><a class="microblog-t" href="http://twitter.com/sunli1223" target="_blank"></a></em><span>去哪儿网架构师</span></li>
+		<li><a href="http://www.fuchaoqun.com/" target="_blank">付超群</a><em><a class="microblog-sina" href="http://weibo.com/fuchaoqun" target="_blank"></a></em><span>搜索和数据挖掘的LAMP人</span></li>
+		<li><a href="http://yemaosheng.com/" target="_blank">叶茂盛</a><em><a href=""></a></em><span>专注系统管理</span></li>
+		<li><a href="http://blog.lamper.cn/" target="_blank">潘少宁</a><em><a class="microblog-sina" href="http://weibo.com/panshaoning" target="_blank"></a></em><span>腾讯滴LAMP人</span></li>
+		<li><a href="http://blog.csdn.net/heiyeshuwu" target="_blank">黑夜路人</a><em><a class="microblog-sina" href="http://weibo.com/heiyeluren" target="_blank"></a></em><span>百度码农，很多有用博文</span></li>
+		<li><a href="http://blog.hexu.org/" target="_blank">和煦</a><em><a href=""></a></em><span>主要研究开源程序</span></li>
+		<li><a href="http://www.dbanotes.net/" target="_blank">冯大辉</a><em><a class="microblog-sina" href="http://weibo.com/fenng" target="_blank"></a></em><span>UNIX，DB，WEB</span></li>
+		<li><a href="http://www.ningoo.net/" target="_blank">宁海元</a><em><a class="microblog-sina" href="http://weibo.com/ningoo" target="_blank"></a></em><span>一淘无线事业部高级技术专家</span></li>
+		<li><a href="http://www.parallellabs.com/" target="_blank">陈冠诚</a><em><a class="microblog-sina" href="http://weibo.com/parallellabs" target="_blank"></a></em><span>关注并行计算</span></li>
+		<li><a href="http://wangcong.org/blog/" target="_blank">王聪</a><em><a href=""></a></em><span>关注Linux Kernel</span></li>
+		
+    </ul>
+	<div><span></span>数据存储相关博客</div>
+    <ul>
+        <li><a href="http://space.itpub.net/batch.viewlink.php?itemid=409184" target="_blank">楊廷琨</a><em><a href=""></a></em><span>Oracle大牛</span></li>
+		<li><a href="http://chenxu.yo2.cn/" target="_blank">朱旭</a><em><a class="microblog-sina" href="http://weibo.com/orzdba" target="_blank"></a></em><span>淘宝滴DBA</span></li>
+		<li><a href="http://www.orczhou.com/" target="_blank" title="淘宝MySQL数据库运维负责人">周振兴</a><em><a class="microblog-sina" href="http://weibo.com/orczhou" target="_blank"></a></em><span>专注MySQL</span></li>
+		<li><a href="http://zhulch.itpub.net/" target="_blank">朱龙春</a><em><a href=""></a></em><span>资深应用系统架构师</span></li>
+		<li><a href="http://www.os2ora.com/" title="专注于OLAP和OLTP环境下的高性能和高可扩展性,以及新一代的Oracle Exadata架构的开发与实践" target="_blank">黄凯耀</a><em><a class="microblog-sina" href="http://weibo.com/kaiyaohuang" target="_blank"></a></em><span>OS与Oracle牛人</span></li>
+		<li><a href="http://www.eygle.com/blog/" target="_blank">盖国强</a><em><a class="microblog-sina" href="http://weibo.com/eygle" target="_blank"></a></em><span>Oracle ACE总监</span></li>
+		<li><a href="http://www.anysql.net/" target="_blank">黄忠</a><em><a class="microblog-sina" href="http://weibo.com/dbatools" target="_blank"></a></em><span>支付宝滴资深DBA</span></li>
+		<li><a href="http://www.dbthink.com/" target="_blank">童家旺</a><em><a href=""></a></em><span>DB神人</span></li>
+		<li><a href="http://www.laoxiong.net/" target="_blank">老熊</a><em><a href=""></a></em><span>Oracle/UNIX/数据恢复</span></li>
+		
+    </ul>
+	<div><span></span>语言开发</div>
+	<ul>
+		<li><a href="http://www.laruence.com/" target="_blank">惠新宸</a><em><a class="microblog-sina" href="http://weibo.com/laruence" target="_blank"></a></em><span>他就是鸟哥</span></li>
+		<li><a href="http://yanbin.org/" target="_blank">闫斌</a><em><a href=""></a></em><span>PHP高手</span></li>
+		<li><a href="http://www.javabloger.com/" target="_blank">黄毅</a><em><a class="microblog-sina" href="http://weibo.com/javabloger" target="_blank"></a></em><span>Java传教士</span></li>
+		<li><a href="http://www.cnblogs.com/jobs/" target="_blank">温少</a><em><a href="" target="_blank"></a></em><span>做Java和.NET</span></li>
+		<li><a href="http://blog.csdn.net/Solstice" target="_blank">陈硕</a><em><a class="microblog-sina" href="http://weibo.com/giantchen" target="_blank"></a></em><span>muduo网络库作者</span></li>
+		<li><a href="http://www.cnblogs.com/shanyou" target="_blank">张善友</a><em><a class="microblog-qq" href="http://t.qq.com/geffzhang" target="_blank"></a></em><span>多年的微软MVP</span></li>
+		<li><a href="http://blog.codingnow.com/" target="_blank">云风</a><em><a href=""></a></em><span>Lua大牛</span></li>
+		<li><a href="http://mindhacks.cn/" target="_blank">刘未鹏</a><em><a class="microblog-sina" target="_blank" href="http://weibo.com/pongba"></a></em><span>C++罗浮宫</span></li>
+		<li><a href="http://blog.solrex.org/" target="_blank">Solrex Yang</a><em><a class="microblog-sina" target="_blank" href="http://weibo.com/solrex"></a></em><span>GDB高手</span></li>
+	</ul>
+	<div><span></span>前端开发</div>
+	<ul>
+		<li><a href="http://www.qianduan.net/" target="_blank">前端观察</a><em><a href=""></a></em><span>资讯，资源，技术</span></li>
+		<li><a href="http://www.cssforest.org/blog/" target="_blank">CSS森林</a><em><a href=""></a></em><span>腾讯滴，不知道离职了没</span></li>
+	</ul>
+    <div><span></span>其他博客</div>
+    <ul>
+        <li><a href="http://www.paulgraham.com/articles.html" target="_blank">Essays</a><em><a href=""></a></em><span>Paul Graham文集</span></li>
+        <li><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a><em><a href=""></a></em><span>IT知名博客</span></li>
+        <li><a href="http://blog.donews.com/keso/" target="_blank">对牛弹琴</a><em><a class="microblog-sina" href="http://weibo.com/keso" target="_blank"></a></em><span>IT知名博客keso</span></li>
+        <li><a href="http://www.williamlong.info" target="_blank">月光博客</a><em><a class="microblog-sina" href="http://weibo.com/williamlong" target="_blank"></a></em><span>关注互联网与搜索引擎</span></li>
+        <li><a href="http://mr6.cc/" target="_blank">Mr.6（台湾）</a><em><a href=""></a></em><span>网络趋势行销与开发</span></li>
+        <li><a href="http://home.wangjianshuo.com/" target="_blank">王建硕</a><em><a class="microblog-sina" href="http://weibo.com/jianshuo" target="_blank"></a></em><span>百姓网CEO</span></li>
+        <li><a href="http://firecacada.blog.163.com/" target="_blank">纯银</a><em><a class="microblog-sina" href="http://weibo.com/cicada" target="_blank"></a></em><span>网易产品总监</span></li>
+        <li><a href="http://iamsujie.com/" target="_blank">人人都是产品经理</a><em><a class="microblog-sina" href="http://weibo.com/iamsujie" target="_blank"></a></em><span>专注PM的知名博客</span></li>
+        <li><a href="http://www.juvenxu.com/" target="_blank">许晓斌</a><em><a class="microblog-sina" href="http://weibo.com/juvenxu" target="_blank"></a></em><span>Maven专家</span></li>
+        <li><a href="http://robbin.iteye.com/" target="_blank">范凯</a><em><a class="microblog-sina" href="http://weibo.com/robbinfan" target="_blank"></a></em><span>ITeye老大</span></li>
+        <li><a href="http://uicom.net/blog/" target="_blank">白鸦</a><em><a class="microblog-sina" href="http://weibo.com/baiya001" target="_blank"></a></em><span>UCDChina发起人</span></li>
+        <li><a href="http://www.cnblogs.com/zhoujg/" target="_blank">周金根</a><em><a href=""></a></em><span>敏捷个人创立和推广者</span></li>
+        <li><a href="http://www.matrix67.com/blog/" target="_blank">matrix67</a><em><a href=""></a></em><span>神牛，不解释</span></li>
+        <li><a href="http://blog.chinaunix.net/uid/12924167.html" target="_blank">余洪春</a><em><a href=""></a></em><span>构建高可用Linux服务器作者</span></li>
+        <li><a href="http://blog.csdn.net/david_lv" target="_blank">阿朱</a><em><a href=""></a></em><span>《走出软件作坊》作者</span></li>
+        <li><a href="http://blog.youxu.info/" target="_blank">徐宥</a><em><a href=""></a></em><span>Google的软件工程师</span></li>
+        <li><a href="http://blog.vgod.tw/" target="_blank">vgod</a><em><a href=""></a></em><span>MIT的博士</span></li>
+        <li><a href="http://zhiqiang.org/blog/" target="_blank">阅微堂</a><em><a href=""></a></em><span>数学、金融、计算机</span></li>
+        <li><a href="http://liu-yang.info/blog/" target="_blank">刘洋</a><em><a href=""></a></em><span>以老大自居的人，呵呵</span></li>
+    </ul>
+	
+	<div><span></span>友情链接</div>
+    <ul>
+        <li><a href="/" target="_blank">iPerl.org</a><em><a href=""></a></em><span>本站主页</span></li>
+    </ul>
+</div>
+<div class="clear mb20"></div>

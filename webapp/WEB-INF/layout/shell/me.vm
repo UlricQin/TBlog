@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-CN"/>
+    <title>$!{stitle} - iPerl</title>
+	<meta name="Keywords" content="$!{skeywords}" />
+    <meta name="Description" content="$!{sdesn}" />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+    #include("WEB-INF/layout/inc/header.vm")
+	<script type="text/javascript" src="/js/jquery.form.js" charset="utf-8"></script>
+</head>
+#set($user=$core.user())
+<body>
+    <div class="screen">
+		#if($user)
+        	#parse("WEB-INF/layout/inc/banner.vm")
+        	<div class="backmenu mb5 navbar mt10">
+				<a href="/me/page">个人主页定制</a>
+                <span class="cut-line">|</span>
+                <a href="/me/profile">个人信息修改</a>
+                <span class="cut-line">,</span>
+                <a href="/me/portrait">头像修改</a>
+                <span class="cut-line">,</span>
+                <a href="/me/pwd">密码修改</a>
+                <span class="cut-line">|</span>
+                <a href="/me/blog/catalog">分类管理</a>
+                <span class="cut-line">,</span>
+                <a href="/me/blog/draft">草稿箱</a>
+                <span class="cut-line">,</span>
+                <a href="/me/blog/history">发表过的博文</a>
+                <span class="cut-line">,</span>
+                <a href="/me/blog/post">发表博文</a>
+        	</div>
+    		$screen_content
+		#else
+			<a href="/home/login">Login first</a>
+		#end
+    </div>
+</body>
+</html>
