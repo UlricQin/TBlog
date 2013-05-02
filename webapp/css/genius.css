@@ -30,6 +30,7 @@ div.nav-123 ul {
     width: 940px;
     float: left;
     margin-left: 0;
+    list-style:none;
 }
 div.nav-123 ul li {
     float: left;
