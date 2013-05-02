@@ -4,11 +4,10 @@ abbr,address,cite,code,del,dfn,ins,kbd,q,samp,small,sub,sup,var,b,i{margin:0;pad
 section,article,aside,header,footer,nav,dialog,figure{display:block;}
 section{ margin-left:auto; margin-right:auto;}
 /*html 5 reset end*/
-*{ margin:0;padding:0;}
+body,p,div,span,h1,h2,h3,h4,h5,h6{ margin:0;padding:0;}
 *{ font:12px/18px Verdana,Arial,Microsoft YaHei,sans-serif; color:#666666; word-wrap:break-word;}
 table{ border-collapse:collapse;}
 span{ vertical-align:baseline;}
-ol, ul, menu{list-style:none;}
 h1,h2,h3,h4,h5,h6{ font-size:14px; font-weight:bold;}
 h3,h3 span{ font-size:16px; font-weight:bold;}
 h2,h2 span{ font-size:18px; font-weight:bold;}
@@ -152,7 +151,7 @@ background:url(/img/y.png) no-repeat;color:#999;margin-left:5px;padding-left:18p
 
 /*slice*/
 #primary{float: right;overflow: hidden;width: 280px;}
-.widget-area ul {list-style: none;margin-left: 0;}
+.widget-area ul {list-style: none;margin-left: 0;margin:0;padding:0;}
 .widget-area ul ul {margin-left: 1.3em;}
 .widget-container {border: 1px solid #1D4088;padding: 0;margin: 0 0 18px 0;padding: 1px;height: 1%;}
 .widget-container .notice{line-height:22px;text-indent:2em;}
@@ -235,4 +234,3 @@ a.tag:hover em {color:#fff;}
 -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;
 border:1px solid #eee;line-height:24px;}
 .navbar em {font-weight:bold;font-size:13px;color:#f60;}
-
