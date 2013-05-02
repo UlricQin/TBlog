@@ -32,7 +32,7 @@ public class TagService {
 			bt.Save();
 		}
 	}
-
+	
 	public static void batchDelTags(Long blogId, String keywords) {
 		if (StringUtils.isBlank(keywords)) {
 			return;
@@ -40,8 +40,9 @@ public class TagService {
 
 		List<BlogTag> list = BlogTag.INSTANCE.BatchGetByAttr("blog", blogId);
 		for (BlogTag bt : list) {
+			int tagId = bt.getTag();
 			if (bt.Delete()) {
-				Tag t = Tag.INSTANCE.Get(bt.getTag());
+				Tag t = Tag.INSTANCE.GetByAttr("id", tagId);
 				int cnt = t.getCnt() - 1;
 				if (cnt == 0) {
 					t.Delete();
