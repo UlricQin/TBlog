@@ -39,6 +39,11 @@
 	#end
 #end
 
+#macro(notFound)
+<hr class="cut-hr mt5 mb15" />
+Oops...The page is missing. <a href="/">Go home</a>
+#end
+
 #macro(catalogs)
 <li id="random-pages-widget" class="widget-container">
 	<h3 class="widget-title">博文分类列表</h3>
