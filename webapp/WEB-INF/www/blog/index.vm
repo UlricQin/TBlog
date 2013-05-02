@@ -1,6 +1,7 @@
 #set($layout="shell/home.vm")
 #set($blogid = $link.param('p1',0))
 #set($blog = $blog_tool.detail($blogid))
+#if($blog)
 #set($user=$core.user())
 #set($stitle="$!{blog.title}")
 #set($skeywords="$!{blog.keywords}")
@@ -68,3 +69,6 @@
 		<!--/slice-->
     </div>
 </div>
+#else
+	#notFound
+#end
