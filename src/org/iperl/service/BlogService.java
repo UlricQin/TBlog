@@ -150,6 +150,9 @@ public class BlogService {
 		
 		List<Long> ids = new ArrayList<Long>(blogTags.size());
 		for(BlogTag bt : blogTags){
+			if (bt == null) {
+				continue;
+			}			
 			long bid = bt.getBlog();
 			ids.add(bid);
 		}
