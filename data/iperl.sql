@@ -92,3 +92,15 @@ primary key (id)
 
 create index idx_page_user on iperl_pages ( user );
 
+drop table if exists iperl_invitations;
+create table iperl_invitations
+(
+id int unsigned not null auto_increment,
+invitation varchar(64) not null comment '邀请码',
+used tinyint not null,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+create index idx_intivation_inti on iperl_invitations ( invitation );
+
+
